@@ -3,36 +3,102 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="description"
-      content="An exploration-based language-learning website."
-    >
+    <meta name="description" content="Explore a neighborhood and practice the language you want to use.">
     <title>Exploration-Based Language Learning</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <script src="js/main.js" defer></script>
+    <script type="module" src="js/main.js"></script>
   </head>
   <body>
-    <main class="app-shell" id="app">
-      <section class="project-intro" aria-labelledby="project-title">
-        <p class="eyebrow">Web Design Final Project</p>
-        <h1 id="project-title">Explore a neighborhood.<br>Practice a language.</h1>
-        <p class="project-summary">
-          A shared world where language learners choose the places, situations,
-          and expressions that matter to them.
-        </p>
-        <p class="project-status" role="status">Project foundation ready.</p>
+    <main class="app-shell" id="app" data-status="loading">
+      <section class="screen welcome-screen is-active" data-screen="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow">Exploration-based language learning</p>
+          <h1 id="welcome-title">Learn what you<br>want to say.</h1>
+          <p class="lede">Explore one shared neighborhood in the language of your choice. Walk into the places that interest you and practice conversations you could actually use.</p>
+          <button class="primary-button" type="button" data-action="choose-language">Choose a language <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="neighborhood-preview" aria-label="Illustrated neighborhood preview">
+          <div class="preview-building preview-cafe"><span>Café</span></div>
+          <div class="preview-building preview-books"><span>Books</span></div>
+          <div class="preview-building preview-market"><span>Market</span></div>
+          <div class="preview-road preview-road-horizontal"></div>
+          <div class="preview-road preview-road-vertical"></div>
+          <div class="preview-tree tree-one"></div>
+          <div class="preview-tree tree-two"></div>
+          <div class="preview-person" aria-hidden="true"></div>
+          <p class="preview-caption">A neighborhood shaped by your choices.</p>
+        </div>
       </section>
 
-      <section
-        class="game-stage"
-        id="game-stage"
-        aria-label="Game area"
-      >
-        <div class="game-placeholder">
-          <span aria-hidden="true">01</span>
-          <p>The neighborhood will appear here.</p>
+      <section class="screen language-screen" data-screen="language" aria-labelledby="language-title" aria-hidden="true">
+        <div class="language-heading">
+          <button class="text-button" type="button" data-action="go-home"><span aria-hidden="true">←</span> Back</button>
+          <p class="eyebrow">Your first choice</p>
+          <h2 id="language-title">Which language do you want to explore?</h2>
+          <p>The neighborhood stays familiar. Its conversations change with you.</p>
         </div>
+        <div class="language-grid">
+          <button class="language-card" type="button" data-language="Japanese"><span class="language-native" lang="ja">日本語</span><span>Japanese</span><span class="card-arrow" aria-hidden="true">→</span></button>
+          <button class="language-card" type="button" data-language="Spanish"><span class="language-native" lang="es">Español</span><span>Spanish</span><span class="card-arrow" aria-hidden="true">→</span></button>
+          <button class="language-card" type="button" data-language="French"><span class="language-native" lang="fr">Français</span><span>French</span><span class="card-arrow" aria-hidden="true">→</span></button>
+          <button class="language-card" type="button" data-language="German"><span class="language-native" lang="de">Deutsch</span><span>German</span><span class="card-arrow" aria-hidden="true">→</span></button>
+          <button class="language-card" type="button" data-language="Chinese"><span class="language-native" lang="zh">中文</span><span>Chinese</span><span class="card-arrow" aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="screen game-screen" data-screen="game" aria-label="Neighborhood game" aria-hidden="true">
+        <header class="game-header">
+          <button class="brand-button" type="button" data-action="go-home" aria-label="Return to welcome screen"><span class="brand-mark">N</span><span>Neighborhood</span></button>
+          <div class="game-header-actions">
+            <p class="current-language"><span>Learning</span><strong data-selected-language>Japanese</strong></p>
+            <button class="icon-button" type="button" data-panel-target="help" aria-label="Open help" aria-expanded="false">?</button>
+            <button class="bag-button" type="button" data-panel-target="bag" aria-label="Open saved phrases" aria-expanded="false"><span aria-hidden="true">▱</span><span>Bag</span><span class="bag-count">0</span></button>
+          </div>
+        </header>
+
+        <div class="game-world" aria-label="Neighborhood map placeholder">
+          <div class="map-grid" aria-hidden="true"></div>
+          <button class="map-building restaurant" type="button" data-action="preview-dialogue"><span class="building-sign">Restaurant</span><span class="building-door">Enter</span></button>
+          <button class="map-building market" type="button" data-action="preview-dialogue"><span class="building-sign">Market</span><span class="building-door">Enter</span></button>
+          <button class="map-building bookstore" type="button" data-action="preview-dialogue"><span class="building-sign">Bookstore</span><span class="building-door">Enter</span></button>
+          <div class="map-building future"><span class="building-sign">More places soon</span></div>
+          <div class="map-tree map-tree-one" aria-hidden="true"></div>
+          <div class="map-tree map-tree-two" aria-hidden="true"></div>
+          <button class="passerby" type="button" data-action="preview-dialogue" aria-label="Talk to a passerby"><span aria-hidden="true"></span><small>Talk</small></button>
+          <div class="player" aria-label="Your position"><span></span><small>You</small></div>
+          <div class="map-status"><span class="status-dot"></span><span>Framework preview</span></div>
+          <div class="mobile-controls" aria-label="Movement controls">
+            <button type="button" aria-label="Move up">↑</button>
+            <button type="button" aria-label="Move left">←</button>
+            <button type="button" aria-label="Move down">↓</button>
+            <button type="button" aria-label="Move right">→</button>
+          </div>
+        </div>
+
+        <footer class="game-footer">
+          <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys to move</p>
+          <p>Walk up to a person or a door to interact.</p>
+        </footer>
+      </section>
+
+      <div class="backdrop" data-action="close-panel" hidden></div>
+
+      <aside class="side-panel" data-panel="bag" aria-labelledby="bag-title" aria-hidden="true">
+        <div class="panel-heading"><div><p class="eyebrow">Your collection</p><h2 id="bag-title">Saved phrases</h2></div><button class="close-button" type="button" data-action="close-panel" aria-label="Close saved phrases">×</button></div>
+        <div class="empty-state"><span aria-hidden="true">▱</span><h3>Your bag is empty</h3><p>Keep a useful sentence during a conversation and it will appear here for review.</p></div>
+      </aside>
+
+      <aside class="side-panel" data-panel="help" aria-labelledby="help-title" aria-hidden="true">
+        <div class="panel-heading"><div><p class="eyebrow">How to explore</p><h2 id="help-title">Controls</h2></div><button class="close-button" type="button" data-action="close-panel" aria-label="Close help">×</button></div>
+        <ol class="help-list"><li><strong>Move around</strong><span>Use WASD, arrow keys, or the on-screen controls.</span></li><li><strong>Choose an encounter</strong><span>Approach a person or enter a place that interests you.</span></li><li><strong>Practice and collect</strong><span>Complete the conversation and save phrases you want to remember.</span></li></ol>
+      </aside>
+
+      <section class="dialogue-panel" data-panel="dialogue" aria-labelledby="dialogue-title" aria-hidden="true">
+        <button class="close-button dialogue-close" type="button" data-action="close-panel" aria-label="Close conversation">×</button>
+        <div class="speaker-avatar" aria-hidden="true"><span></span></div>
+        <div class="dialogue-copy"><p class="eyebrow">Conversation preview</p><h2 id="dialogue-title">A real-life encounter will begin here.</h2><p>In the next stage, this panel will show a prompt, answer choices, feedback, and a button to save the sentence.</p></div>
+        <button class="secondary-button" type="button" data-action="close-panel">Continue exploring</button>
       </section>
     </main>
   </body>

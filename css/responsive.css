@@ -1,55 +1,49 @@
-@media (max-width: 56rem) {
-  .app-shell {
-    grid-template-columns: 1fr;
-    align-content: center;
-  }
+@media (max-width: 64rem) {
+  .welcome-screen { grid-template-columns: minmax(17rem, .8fr) minmax(24rem, 1.2fr); gap: 2.5rem; }
+  .language-grid { grid-template-columns: repeat(3, 1fr); }
+  .language-card { min-height: 9.5rem; }
+}
 
-  .project-intro {
-    max-width: 44rem;
-  }
-
-  .game-stage {
-    aspect-ratio: 16 / 9;
-  }
+@media (max-width: 48rem) {
+  .welcome-screen { grid-template-columns: 1fr; align-content: start; padding-top: 3rem; }
+  .welcome-copy { max-width: 38rem; }
+  .neighborhood-preview { min-height: 25rem; }
+  .language-screen { align-content: start; padding-top: 2.5rem; }
+  .language-grid { grid-template-columns: repeat(2, 1fr); }
+  .game-footer { display: none; }
+  .brand-button > span:last-child, .current-language span, .bag-button > span:nth-child(2) { display: none; }
+  .current-language { margin-right: .2rem; }
+  .map-building { min-width: 7rem; min-height: 6rem; }
+  .restaurant { left: 3%; width: 31%; }.market { right: 3%; width: 31%; }.bookstore { right: 3%; width: 31%; }.future { left: 3%; width: 28%; }
+  .mobile-controls { position: absolute; right: 1rem; bottom: 1rem; display: grid; grid-template-columns: repeat(3, 2.8rem); grid-template-rows: repeat(2, 2.8rem); gap: .25rem; }
+  .mobile-controls button { border: 1px solid var(--ink); border-radius: .55rem; background: rgb(255 253 247 / 88%); font-weight: 900; }
+  .mobile-controls button:nth-child(1) { grid-column: 2; }.mobile-controls button:nth-child(2) { grid-column: 1; grid-row: 2; }.mobile-controls button:nth-child(3) { grid-column: 2; grid-row: 2; }.mobile-controls button:nth-child(4) { grid-column: 3; grid-row: 2; }
+  .dialogue-panel { grid-template-columns: auto 1fr; }.dialogue-panel .secondary-button { grid-column: 1 / -1; }
 }
 
 @media (max-width: 36rem) {
-  :root {
-    --page-gutter: 1rem;
-  }
+  :root { --gutter: 1rem; }
+  h1 { font-size: clamp(3.1rem, 16vw, 5rem); }
+  .welcome-screen { padding-top: 2rem; gap: 2rem; }
+  .lede { margin: 1.4rem 0 1.7rem; font-size: 1rem; }
+  .neighborhood-preview { min-height: 20rem; border-radius: 1.25rem; }
+  .preview-caption { font-size: .68rem; }
+  .language-heading { margin-bottom: 2rem; }.language-heading h2 { font-size: 2.3rem; }
+  .language-grid { gap: .65rem; }.language-card { min-height: 7.5rem; padding: 1rem; border-radius: .85rem; }.language-native { font-size: 1.35rem; }
+  .game-header { padding: .65rem; }
+  .map-building { min-width: 5.5rem; padding: .45rem; box-shadow: .3rem .3rem 0 rgb(32 37 31 / 18%); }
+  .building-sign { padding: .25rem .4rem; font-size: .62rem; }.building-door { padding: .65rem .35rem .15rem; font-size: 0; }
+  .map-tree-one { left: 38%; }.map-tree-two { display: none; }
+  .map-status { top: .65rem; left: .65rem; }
+  .dialogue-panel { bottom: .6rem; grid-template-columns: 1fr; gap: .9rem; width: calc(100% - 1.2rem); padding: 1.1rem; }.speaker-avatar { display: none; }.dialogue-panel .secondary-button { grid-column: auto; }.dialogue-copy { padding-right: 1.5rem; }
+}
 
-  .app-shell {
-    gap: 1.75rem;
-    align-content: start;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-
-  h1 {
-    font-size: clamp(2.4rem, 13vw, 4rem);
-  }
-
-  .project-summary {
-    margin-top: 1.5rem;
-  }
-
-  .project-status {
-    margin-top: 1.5rem;
-  }
-
-  .game-stage {
-    aspect-ratio: 4 / 3;
-    border-radius: 0.9rem;
-  }
+@media (orientation: landscape) and (max-height: 34rem) {
+  .welcome-screen { grid-template-columns: .9fr 1.1fr; padding-block: 1.25rem; }
+  .welcome-screen h1 { font-size: clamp(2.8rem, 8vw, 5rem); }.welcome-screen .lede { margin: 1rem 0; font-size: .9rem; }.neighborhood-preview { min-height: calc(100vh - 2.5rem); }
+  .language-screen { align-content: center; padding-block: 1rem; }.language-heading { margin-bottom: 1rem; }.text-button { margin-bottom: .75rem; }.language-heading > p:last-child { display: none; }.language-grid { grid-template-columns: repeat(5, 1fr); }.language-card { min-height: 7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

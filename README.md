@@ -6,7 +6,7 @@ The project will let learners explore a shared neighborhood, choose the situatio
 
 ## Current status
 
-Phase 1 is complete: the repository contains a responsive HTML, CSS, and JavaScript foundation. Game systems, maps, language packs, and learning interactions will be added in later phases.
+Phase 2 is complete: the responsive interface now includes a welcome screen, five-language selection, a neighborhood framework, conversation preview, help panel, and saved-phrase bag. Movement, map scenes, language packs, and complete learning interactions will be added in later phases.
 
 ## Run locally
 
@@ -21,7 +21,8 @@ Open `index.html` in a browser, or serve the repository with any local static se
 │   ├── main.css
 │   └── responsive.css
 └── js/
-    └── main.js
+    ├── main.js
+    └── ui.js
 ```
 
 ## Planned platform support
