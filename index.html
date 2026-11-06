@@ -57,22 +57,23 @@
           </div>
         </header>
 
-        <div class="game-world" aria-label="Neighborhood map placeholder">
+        <div class="game-world" aria-label="Playable neighborhood map">
           <div class="map-grid" aria-hidden="true"></div>
-          <button class="map-building restaurant" type="button" data-action="preview-dialogue"><span class="building-sign">Restaurant</span><span class="building-door">Enter</span></button>
-          <button class="map-building market" type="button" data-action="preview-dialogue"><span class="building-sign">Market</span><span class="building-door">Enter</span></button>
-          <button class="map-building bookstore" type="button" data-action="preview-dialogue"><span class="building-sign">Bookstore</span><span class="building-door">Enter</span></button>
-          <div class="map-building future"><span class="building-sign">More places soon</span></div>
-          <div class="map-tree map-tree-one" aria-hidden="true"></div>
-          <div class="map-tree map-tree-two" aria-hidden="true"></div>
-          <button class="passerby" type="button" data-action="preview-dialogue" aria-label="Talk to a passerby"><span aria-hidden="true"></span><small>Talk</small></button>
+          <button class="map-building restaurant" type="button" data-obstacle data-encounter="restaurant"><span class="building-sign">Restaurant</span><span class="building-door">Enter</span></button>
+          <button class="map-building market" type="button" data-obstacle data-encounter="market"><span class="building-sign">Market</span><span class="building-door">Enter</span></button>
+          <button class="map-building bookstore" type="button" data-obstacle data-encounter="bookstore"><span class="building-sign">Bookstore</span><span class="building-door">Enter</span></button>
+          <div class="map-building future" data-obstacle><span class="building-sign">More places soon</span></div>
+          <div class="map-tree map-tree-one" data-obstacle aria-hidden="true"></div>
+          <div class="map-tree map-tree-two" data-obstacle aria-hidden="true"></div>
+          <button class="passerby" type="button" data-encounter="passerby" aria-label="Talk to a passerby"><span aria-hidden="true"></span><small>Talk</small></button>
           <div class="player" aria-label="Your position"><span></span><small>You</small></div>
-          <div class="map-status"><span class="status-dot"></span><span>Framework preview</span></div>
+          <div class="map-status" role="status" aria-live="polite"><span class="status-dot"></span><span data-map-status>Explore the neighborhood</span></div>
+          <button class="interaction-prompt" type="button" data-action="game-interact" hidden><span data-interaction-label>Interact</span><kbd>E</kbd></button>
           <div class="mobile-controls" aria-label="Movement controls">
-            <button type="button" aria-label="Move up">↑</button>
-            <button type="button" aria-label="Move left">←</button>
-            <button type="button" aria-label="Move down">↓</button>
-            <button type="button" aria-label="Move right">→</button>
+            <button type="button" data-direction="up" aria-label="Move up">↑</button>
+            <button type="button" data-direction="left" aria-label="Move left">←</button>
+            <button type="button" data-direction="down" aria-label="Move down">↓</button>
+            <button type="button" data-direction="right" aria-label="Move right">→</button>
           </div>
         </div>
 
@@ -97,7 +98,7 @@
       <section class="dialogue-panel" data-panel="dialogue" aria-labelledby="dialogue-title" aria-hidden="true">
         <button class="close-button dialogue-close" type="button" data-action="close-panel" aria-label="Close conversation">×</button>
         <div class="speaker-avatar" aria-hidden="true"><span></span></div>
-        <div class="dialogue-copy"><p class="eyebrow">Conversation preview</p><h2 id="dialogue-title">A real-life encounter will begin here.</h2><p>In the next stage, this panel will show a prompt, answer choices, feedback, and a button to save the sentence.</p></div>
+        <div class="dialogue-copy"><p class="eyebrow" data-dialogue-eyebrow>Conversation preview</p><h2 id="dialogue-title" data-dialogue-title>A real-life encounter will begin here.</h2><p data-dialogue-description>In the next stage, this panel will show a prompt, answer choices, feedback, and a button to save the sentence.</p></div>
         <button class="secondary-button" type="button" data-action="close-panel">Continue exploring</button>
       </section>
     </main>

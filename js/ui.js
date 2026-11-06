@@ -1,8 +1,48 @@
+import { initializeGame } from "./game.js";
+
 const screenNames = ["welcome", "language", "game"];
+
+const encounters = {
+  restaurant: {
+    eyebrow: "Restaurant encounter",
+    title: "Order something you want.",
+    description: "Practice a useful ordering conversation with the restaurant staff.",
+  },
+  market: {
+    eyebrow: "Market encounter",
+    title: "Find an item in the market.",
+    description: "Ask where something is, understand the answer, and continue shopping.",
+  },
+  bookstore: {
+    eyebrow: "Bookstore encounter",
+    title: "Ask for a recommendation.",
+    description: "Describe what you like and practice asking a bookseller for help.",
+  },
+  passerby: {
+    eyebrow: "Street encounter",
+    title: "Ask a local for directions.",
+    description: "Start a short, practical conversation with someone in the neighborhood.",
+  },
+};
 
 export function initializeUI(app) {
   const backdrop = app.querySelector(".backdrop");
   let activePanel = null;
+
+  function openEncounter(name) {
+    const encounter = encounters[name];
+    if (!encounter) return;
+
+    app.querySelector("[data-dialogue-eyebrow]").textContent = encounter.eyebrow;
+    app.querySelector("[data-dialogue-title]").textContent = encounter.title;
+    app.querySelector("[data-dialogue-description]").textContent = encounter.description;
+    openPanel("dialogue");
+  }
+
+  const game = initializeGame(app, {
+    onEncounter: openEncounter,
+    isPaused: () => activePanel !== null || !app.querySelector('[data-screen="game"]').classList.contains("is-active"),
+  });
 
   function showScreen(name) {
     if (!screenNames.includes(name)) return;
@@ -48,6 +88,7 @@ export function initializeUI(app) {
 
   app.addEventListener("click", (event) => {
     const languageButton = event.target.closest("[data-language]");
+    const encounterButton = event.target.closest("[data-encounter]");
     const panelButton = event.target.closest("[data-panel-target]");
     const actionButton = event.target.closest("[data-action]");
 
@@ -56,6 +97,12 @@ export function initializeUI(app) {
         label.textContent = languageButton.dataset.language;
       });
       showScreen("game");
+      game.reset();
+      return;
+    }
+
+    if (encounterButton) {
+      openEncounter(encounterButton.dataset.encounter);
       return;
     }
 
@@ -70,7 +117,7 @@ export function initializeUI(app) {
       "choose-language": () => showScreen("language"),
       "go-home": () => showScreen("welcome"),
       "close-panel": closePanel,
-      "preview-dialogue": () => openPanel("dialogue"),
+      "game-interact": game.interact,
     };
 
     actions[actionButton.dataset.action]?.();
