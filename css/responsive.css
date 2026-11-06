@@ -1,0 +1,55 @@
+@media (max-width: 56rem) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  .project-intro {
+    max-width: 44rem;
+  }
+
+  .game-stage {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 36rem) {
+  :root {
+    --page-gutter: 1rem;
+  }
+
+  .app-shell {
+    gap: 1.75rem;
+    align-content: start;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  .project-summary {
+    margin-top: 1.5rem;
+  }
+
+  .project-status {
+    margin-top: 1.5rem;
+  }
+
+  .game-stage {
+    aspect-ratio: 4 / 3;
+    border-radius: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
