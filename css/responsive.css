@@ -19,6 +19,10 @@
   .mobile-controls button { border: 1px solid var(--ink); border-radius: .55rem; background: rgb(255 253 247 / 88%); font-weight: 900; }
   .mobile-controls button:nth-child(1) { grid-column: 2; }.mobile-controls button:nth-child(2) { grid-column: 1; grid-row: 2; }.mobile-controls button:nth-child(3) { grid-column: 2; grid-row: 2; }.mobile-controls button:nth-child(4) { grid-column: 3; grid-row: 2; }
   .dialogue-panel { grid-template-columns: auto 1fr; }.dialogue-panel .secondary-button { grid-column: 1 / -1; }
+  .interior-world { display: block; overflow-y: auto; }
+  .restaurant-room { position: absolute; inset: 0; border: 0; opacity: .32; }
+  .lesson-card { position: relative; width: calc(100% - 1.25rem); max-height: calc(100% - 5.2rem); margin: 4.5rem auto .7rem; }
+  .exit-scene-button { top: .75rem; left: .75rem; }
 }
 
 @media (max-width: 36rem) {
@@ -36,12 +40,14 @@
   .map-tree-one { left: 38%; }.map-tree-two { display: none; }
   .map-status { top: .65rem; left: .65rem; }
   .dialogue-panel { bottom: .6rem; grid-template-columns: 1fr; gap: .9rem; width: calc(100% - 1.2rem); padding: 1.1rem; }.speaker-avatar { display: none; }.dialogue-panel .secondary-button { grid-column: auto; }.dialogue-copy { padding-right: 1.5rem; }
+  .lesson-card { padding: 1rem; border-radius: 1rem; }.lesson-header h2 { font-size: 1.65rem; }.staff-line p { font-size: 1.2rem; }.typing-row { grid-template-columns: 1fr; }.lesson-actions { align-items: stretch; flex-direction: column; }.lesson-actions > button { width: 100%; }.answer-option { padding: .72rem .8rem; }
 }
 
 @media (orientation: landscape) and (max-height: 34rem) {
   .welcome-screen { grid-template-columns: .9fr 1.1fr; padding-block: 1.25rem; }
   .welcome-screen h1 { font-size: clamp(2.8rem, 8vw, 5rem); }.welcome-screen .lede { margin: 1rem 0; font-size: .9rem; }.neighborhood-preview { min-height: calc(100vh - 2.5rem); }
   .language-screen { align-content: center; padding-block: 1rem; }.language-heading { margin-bottom: 1rem; }.text-button { margin-bottom: .75rem; }.language-heading > p:last-child { display: none; }.language-grid { grid-template-columns: repeat(5, 1fr); }.language-card { min-height: 7rem; }
+  .lesson-card { max-height: calc(100% - 1rem); margin: .5rem 1rem .5rem auto; width: min(58%, 34rem); padding: .85rem; }.exit-scene-button { top: .6rem; left: .6rem; }.lesson-header { padding-bottom: .6rem; }.lesson-content { gap: .65rem; padding-top: .65rem; }.staff-line { padding: .55rem .7rem; }.staff-line p { font-size: 1.05rem; }.answer-grid { gap: .35rem; }.answer-option { padding: .48rem .65rem; font-size: .8rem; }.answer-feedback { min-height: 0; }.lesson-goal h3 { font-size: .9rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

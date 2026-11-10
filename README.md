@@ -6,7 +6,7 @@ The project will let learners explore a shared neighborhood, choose the situatio
 
 ## Current status
 
-Phase 3 is complete: the neighborhood is now playable with keyboard and touch movement, responsive collision detection, nearby interaction prompts, and location-specific encounter previews. Interior scenes, language packs, and complete learning interactions will be added in later phases.
+Phase 4 is complete: the restaurant now has a responsive interior scene and a complete three-part conversation in Japanese, Spanish, French, German, and Chinese. Learners receive feedback, can switch a typing challenge to choices, and can save useful phrases to a persistent review bag.
 
 ## Run locally
 
@@ -22,6 +22,8 @@ Open `index.html` in a browser, or serve the repository with any local static se
 │   └── responsive.css
 └── js/
     ├── game.js
+    ├── language-data.js
+    ├── lesson.js
     ├── main.js
     └── ui.js
 ```

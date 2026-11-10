@@ -57,29 +57,48 @@
           </div>
         </header>
 
-        <div class="game-world" aria-label="Playable neighborhood map">
-          <div class="map-grid" aria-hidden="true"></div>
-          <button class="map-building restaurant" type="button" data-obstacle data-encounter="restaurant"><span class="building-sign">Restaurant</span><span class="building-door">Enter</span></button>
-          <button class="map-building market" type="button" data-obstacle data-encounter="market"><span class="building-sign">Market</span><span class="building-door">Enter</span></button>
-          <button class="map-building bookstore" type="button" data-obstacle data-encounter="bookstore"><span class="building-sign">Bookstore</span><span class="building-door">Enter</span></button>
-          <div class="map-building future" data-obstacle><span class="building-sign">More places soon</span></div>
-          <div class="map-tree map-tree-one" data-obstacle aria-hidden="true"></div>
-          <div class="map-tree map-tree-two" data-obstacle aria-hidden="true"></div>
-          <button class="passerby" type="button" data-encounter="passerby" aria-label="Talk to a passerby"><span aria-hidden="true"></span><small>Talk</small></button>
-          <div class="player" aria-label="Your position"><span></span><small>You</small></div>
-          <div class="map-status" role="status" aria-live="polite"><span class="status-dot"></span><span data-map-status>Explore the neighborhood</span></div>
-          <button class="interaction-prompt" type="button" data-action="game-interact" hidden><span data-interaction-label>Interact</span><kbd>E</kbd></button>
-          <div class="mobile-controls" aria-label="Movement controls">
-            <button type="button" data-direction="up" aria-label="Move up">↑</button>
-            <button type="button" data-direction="left" aria-label="Move left">←</button>
-            <button type="button" data-direction="down" aria-label="Move down">↓</button>
-            <button type="button" data-direction="right" aria-label="Move right">→</button>
+        <div class="scene-stage">
+          <div class="game-world" data-scene="map" aria-label="Playable neighborhood map">
+            <div class="map-grid" aria-hidden="true"></div>
+            <button class="map-building restaurant" type="button" data-obstacle data-encounter="restaurant"><span class="building-sign">Restaurant</span><span class="building-door">Enter</span></button>
+            <button class="map-building market" type="button" data-obstacle data-encounter="market"><span class="building-sign">Market</span><span class="building-door">Enter</span></button>
+            <button class="map-building bookstore" type="button" data-obstacle data-encounter="bookstore"><span class="building-sign">Bookstore</span><span class="building-door">Enter</span></button>
+            <div class="map-building future" data-obstacle><span class="building-sign">More places soon</span></div>
+            <div class="map-tree map-tree-one" data-obstacle aria-hidden="true"></div>
+            <div class="map-tree map-tree-two" data-obstacle aria-hidden="true"></div>
+            <button class="passerby" type="button" data-encounter="passerby" aria-label="Talk to a passerby"><span aria-hidden="true"></span><small>Talk</small></button>
+            <div class="player" aria-label="Your position"><span></span><small>You</small></div>
+            <div class="map-status" role="status" aria-live="polite"><span class="status-dot"></span><span data-map-status>Explore the neighborhood</span></div>
+            <button class="interaction-prompt" type="button" data-action="game-interact" hidden><span data-interaction-label>Interact</span><kbd>E</kbd></button>
+            <div class="mobile-controls" aria-label="Movement controls">
+              <button type="button" data-direction="up" aria-label="Move up">↑</button>
+              <button type="button" data-direction="left" aria-label="Move left">←</button>
+              <button type="button" data-direction="down" aria-label="Move down">↓</button>
+              <button type="button" data-direction="right" aria-label="Move right">→</button>
+            </div>
           </div>
+
+          <section class="interior-world" data-scene="restaurant" aria-labelledby="restaurant-title" hidden>
+            <div class="restaurant-room" aria-hidden="true">
+              <div class="restaurant-counter"><span>RAMEN</span></div>
+              <div class="restaurant-stool stool-one"></div><div class="restaurant-stool stool-two"></div><div class="restaurant-stool stool-three"></div>
+              <div class="restaurant-table table-one"></div><div class="restaurant-table table-two"></div>
+              <div class="restaurant-staff"><span></span></div>
+            </div>
+            <button class="exit-scene-button" type="button" data-action="exit-interior"><span aria-hidden="true">←</span> Back to the street</button>
+            <section class="lesson-card" aria-live="polite">
+              <header class="lesson-header">
+                <div><p class="eyebrow">Restaurant practice</p><h2 id="restaurant-title">Order a meal</h2></div>
+                <p class="lesson-progress"><span data-lesson-step>1</span> / <span data-lesson-total>3</span></p>
+              </header>
+              <div class="lesson-content" data-lesson-content></div>
+            </section>
+          </section>
         </div>
 
         <footer class="game-footer">
-          <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys to move</p>
-          <p>Walk up to a person or a door to interact.</p>
+          <p data-scene-controls><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys to move</p>
+          <p data-scene-instructions>Walk up to a person or a door to interact.</p>
         </footer>
       </section>
 
@@ -87,7 +106,8 @@
 
       <aside class="side-panel" data-panel="bag" aria-labelledby="bag-title" aria-hidden="true">
         <div class="panel-heading"><div><p class="eyebrow">Your collection</p><h2 id="bag-title">Saved phrases</h2></div><button class="close-button" type="button" data-action="close-panel" aria-label="Close saved phrases">×</button></div>
-        <div class="empty-state"><span aria-hidden="true">▱</span><h3>Your bag is empty</h3><p>Keep a useful sentence during a conversation and it will appear here for review.</p></div>
+        <div class="empty-state" data-bag-empty><span aria-hidden="true">▱</span><h3>Your bag is empty</h3><p>Keep a useful sentence during a conversation and it will appear here for review.</p></div>
+        <div class="phrase-list" data-bag-list></div>
       </aside>
 
       <aside class="side-panel" data-panel="help" aria-labelledby="help-title" aria-hidden="true">
